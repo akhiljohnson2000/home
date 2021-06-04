@@ -12,6 +12,56 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+ 
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
-</ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Slot Finder</ion-label>
+        <ion-input [(ngModel)]="pincode" placeholder="Enter pincode"></ion-input>
+      <ion-toggle [(ngModel)]="slotFinderStatus" (ionChange)="slotFinderStatusChange($event)"></ion-toggle>
+    </ion-item>
+    
+    <ion-grid *ngIf="vaccineSlotsArray.length > 0">
+      <ion-row> 
+        <ion-col>
+          Time
+         </ion-col>
+        <ion-col>
+          Name
+         </ion-col>
+        <ion-col>
+          18
+        </ion-col>
+        <ion-col>
+          45
+        </ion-col> 
+      </ion-row>
+
+
+      <ion-row *ngFor="let slot of vaccineSlotsArray; let i = index"> 
+        <ion-col>
+          {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].time | date:"HH:mm:ss"}}
+         </ion-col>
+        <ion-col>
+         {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].name}}
+        </ion-col>
+
+        <ion-col *ngIf = "vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity == 0">
+          {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity}}
+         </ion-col>
+         <ion-col *ngIf = "vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity > 0" style="background-color: greenyellow;">
+          {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity}}
+         </ion-col>
+
+         <ion-col *ngIf = "vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity == 0">
+          {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[1].available_capacity}}
+         </ion-col>
+         <ion-col *ngIf = "vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[0].available_capacity > 0" style="background-color: greenyellow;">
+          {{vaccineSlotsArray[vaccineSlotsArray.length-i-1]['centers'][0].sessions[1].available_capacity}}
+         </ion-col>
+      </ion-row> 
+    </ion-grid>
+
+    
+  </ion-list>
+ </ion-content>
