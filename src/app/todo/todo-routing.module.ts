@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Tab3Page } from './tab3.page';
+import { TodoPage } from './todo.page';
 
 const routes: Routes = [
   {
+    path: 'todo',
+    component: TodoPage
+  },
+  {
     path: '',
-    component: Tab3Page,
+    redirectTo: '/todo',
+    pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
 })
-export class Tab3PageRoutingModule {}
+export class TabsPageRoutingModule {}
