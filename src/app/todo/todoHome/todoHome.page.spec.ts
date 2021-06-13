@@ -1,21 +1,21 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { TodoPage } from './todo.page';
+import { TodoHomePage } from './todoHome.page';
 
 describe('TabsPage', () => {
-  let component: TodoPage;
-  let fixture: ComponentFixture<TodoPage>;
+  let component: TodoHomePage;
+  let fixture: ComponentFixture<TodoHomePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoPage],
+      declarations: [TodoHomePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TodoPage);
+    fixture = TestBed.createComponent(TodoHomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,7 +5,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <!-- <ion-title></ion-title> -->
-    </ion-toolbar> 
+    </ion-toolbar>
   </ion-header>
 
   <ion-menu side="start" menuId="first" contentId="main">
@@ -14,12 +14,12 @@
         <ion-title>Start Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content (click)="navigateTo('/todo/home')">
       <ion-list>
-        <ion-item>To Do</ion-item>
+        <ion-item >To Do</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-   
-  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <ion-router-outlet id="main" class="todoBody"></ion-router-outlet>
 </ion-app>

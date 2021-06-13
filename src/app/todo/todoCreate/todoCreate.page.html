@@ -1,0 +1,37 @@
+<ion-content> 
+  <form [formGroup]="todoCreateData" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label >Task Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select formControlName="priority" multiple="false">
+        <ion-select-option *ngFor="let priorityData of jsonFile['todo']?.priority " value="{{priorityData.name}}">
+          {{priorityData.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tags</ion-label>
+      <ion-select formControlName="tags" multiple="true">
+        <ion-select-option *ngFor="let tagsData of jsonFile['todo']?.tags " value="{{tagsData.name}}">
+          {{tagsData.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea formControlName="description" rows="12"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!todoCreateData.valid" style="    padding: 2px;
+    position: absolute;
+    width: 99%;
+    bottom: 0;">Submit</ion-button>
+  </form>
+
+</ion-content>

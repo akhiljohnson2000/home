@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -7,7 +8,9 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menu: MenuController) {}
+  constructor(private menu: MenuController, private route:Router) {}
+
+  
 
   openFirst() {
     this.menu.enable(true, 'first');
@@ -21,5 +24,10 @@ export class AppComponent {
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
+  }
+  
+  navigateTo(url){
+    this.route.navigate([url]); 
+    this.menu.toggle();
   }
 }
